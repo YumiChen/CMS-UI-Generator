@@ -3,6 +3,7 @@ import Fields from "./Fields";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import action_currentQuery from "../actions/action_currentQuery";
+import texts from "../../data/Texts";
 // connected to state: currentapis
 // connected to action: change current query
 
@@ -49,7 +50,7 @@ class DQArea extends Component{
 
 		return (<div className="DQArea">
 			<form>
-			<p style={style}>*為主索引鍵</p>
+			<p style={style}>{texts.DQPKInfo}</p>
 			<Fields 
 				cols={props.currentTable===null?null:info}
 				customClass="DQField"	
@@ -59,8 +60,8 @@ class DQArea extends Component{
 				className="btn btn-primary"
 				onClick={this.query}
 				id="query"
-			>查詢</button>
-			<button name = "clear" className="btn btn-primary" onClick={this.clear}>清空欄位</button>
+			>{texts.QUERYALIAS}</button>
+			<button name = "clear" className="btn btn-primary" onClick={this.clear}>{texts.CLEARALIAS}</button>
 			</form>
 		</div>);
 	}

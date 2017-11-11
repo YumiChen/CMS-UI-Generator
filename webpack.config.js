@@ -13,7 +13,6 @@ module.exports = [{
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js'
-    // ,publicPath: '/static/'
   },
   module: {
     rules: [
@@ -56,13 +55,5 @@ module.exports = [{
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.NoErrorsPlugin()
-    // ,
-    // new webpack.LoaderOptionsPlugin({
-    //   options: {
-    //     postcss: [
-    //       autoprefixer(),
-    //     ]
-    //    }
-    // })
   ]
 }];

@@ -24,7 +24,7 @@
     ]
     (2) available field types are:
         varchar, int, date
-    (3) query API should return data containing list property, like below:
+    (3) query API should return JSON object containing list property, like below:
         {
             list: [
                 {
@@ -34,7 +34,7 @@
                 {...}...],
             [other properties...]
         }
-        also query API should accept following parameters:
+    (4) also query API should accept following parameters:
         1. start(int): the number to query data of which index is greater than
         2. rowsperpage(int): the number of (rows of) data to return
 */
@@ -44,7 +44,7 @@ module.exports =
     AjaxAPI : "",
     tables: [
     {
-        name: "aaa",
+        name: "Table1",
         fields: [{
             name: "id",
             type: "int",
@@ -65,8 +65,9 @@ module.exports =
             query: "",
             delete: ""
         }
-    },{
-        name: "ccc",
+    },
+    {
+        name: "Table2",
         fields: [{
             name: "id",
             type: "int",
@@ -75,106 +76,9 @@ module.exports =
             name: "name",
             type: "varchar",
             PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "ddd",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
-            type: "varchar",
-            PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "eee",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
-            type: "varchar",
-            PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "fff",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
-            type: "varchar",
-            PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "ggg",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
-            type: "varchar",
-            PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "jjj",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
-            type: "varchar",
-            PK: false
-        }],
-        apis:{
-            insert: "",
-            update: "",
-            query: "",
-            delete: ""
-        }
-    },{
-        name: "www",
-        fields: [{
-            name: "id",
-            type: "int",
-            PK: true
-        },{
-            name: "name",
+        },
+        {
+            name: "test",
             type: "varchar",
             PK: false
         }],

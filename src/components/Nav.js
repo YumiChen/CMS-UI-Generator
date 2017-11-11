@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import action_currentApis from "../actions/action_currentApis";
 import action_currentTable from "../actions/action_currentTable";
 import action_getTables from "../actions/action_getTables";
-
+import {TableListTitle} from "../../data/Texts";
 import TableInfo from "../../data/TableInfo";
 
 // connected to state:tablenames
@@ -68,7 +68,7 @@ class Nav extends Component{
 		<div className="list-group nav">
 		  <div className="tableNames">
 		<a href="#" className="list-group-item active">
-		Tables</a>
+		{TableListTitle}</a>
 		{tables}
 		    </div>
 		</div>

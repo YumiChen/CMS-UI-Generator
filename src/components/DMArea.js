@@ -3,6 +3,7 @@ import Fields from "./Fields";
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import action_currentQuery from "../actions/action_currentQuery";
+import texts from "../../data/Texts";
 
 // connect to state: currentapis, currentshowone
 
@@ -10,8 +11,8 @@ class DMArea extends Component{
 	constructor(props){
 		super(props);
 		sweetAlert.setDefaults({ 
-		    confirmButtonText: "是",
-		    cancelButtonText: "取消",
+		    confirmButtonText: texts.confirmButtonText,
+		    cancelButtonText: texts.cancelButtonText,
 			confirmButtonColor: '#3085d6',
 			cancelButtonColor: '#d33'
 		});
@@ -43,7 +44,7 @@ class DMArea extends Component{
 			console.log(data.success);
 			console.log(data.mes);
 			if(data.success==false || data.success == "failed" || data.mes=="failed"){
-				sweetAlert('Error','您填寫的資料有誤或網路暫時無法服務','error');
+				sweetAlert('Error',texts.GeneralErrors,'error');
 			}else if(data.success == true || data.mes == "success"){
 				sweetAlert('Success',mes1,'success');
 				// refresh
@@ -53,7 +54,7 @@ class DMArea extends Component{
 			}
 		}).catch((error)=>{
 			console.log(error);
-	  		sweetAlert('Error','您填寫的資料有誤或網路暫時無法服務','error');
+	  		sweetAlert('Error',texts.GeneralErrors,'error');
   		});
 	}
 	refresh(event){
@@ -77,16 +78,16 @@ class DMArea extends Component{
 		}
 		
 		if(count == length){
-			sweetAlert('Error',"您未填寫任何資料",'error');
+			sweetAlert('Error',texts.NodataInputted,'error');
 			return;
 		}else if(count > 0){
 			sweetAlert({
-				  title: '您有欄位未填寫，是否要繼續?',
-				  text: "請確認您欲更新的資料都已填寫",
+				  title: texts.EmptyFieldsComfirm,
+				  text: texts.InsertHint,
 				  type: 'warning',
 				  showCancelButton: true
 				}).then(function () {
-					handleFetch("insert",fields,"您的資料已新增");
+					handleFetch("insert", fields, texts.InsertedHint);
 				});
 			return;
 		}
@@ -100,22 +101,22 @@ class DMArea extends Component{
 		for(let i = 0;i<fields.length;i++){
 			if(fields[i].value == ""){
 				if(fields[i].getAttribute("data-pk")=="PK"){
-					sweetAlert('Error','主索引鍵不可為空白','error');
+					sweetAlert('Error',texts.PKIsEmpty,'error');
 					return;
 				}else{
 					sweetAlert({
-						  title: '您有欄位未填寫，是否要繼續?',
-						  text: "請確認您欲更新的資料都已填寫",
+						  title: texts.EmptyFieldsComfirm,
+						  text: texts.UpdateHint,
 						  type: 'warning',
 						  showCancelButton: true
 						}).then(function () {
-							handleFetch("update",fields,"您的資料已更新");
+							handleFetch("update",fields,texts.UpdatedHint);
 						});
 					return;
 				}
 			}
 		}
-		handleFetch("update",fields,"您的資料已更新");
+		handleFetch("update",fields,texts.UpdatedHint);
 	}
 	delete(event){
 		event.preventDefault();
@@ -124,17 +125,17 @@ class DMArea extends Component{
 		for(let i = 0;i<fields.length;i++){
 			if(fields[i].value == ""){
 				if(fields[i].getAttribute("data-pk")=="PK"){
-					sweetAlert('Error','主索引鍵不可為空白','error');
+					sweetAlert('Error',texts.PKIsEmpty,'error');
 					return;
 				}
 			}
 			sweetAlert({
-				  title: '您是否要刪除此筆資料?',
-				  text: "注意:此動作無法回復",
+				  title: texts.DeleteConfirm,
+				  text: texts.DeleteHint,
 				  type: 'warning',
 				  showCancelButton: true
 				}).then(function () {
-					handleFetch("delete",fields,"您的資料已刪除");
+					handleFetch("delete",fields,texts.DeletedHint);
 				});
 		}
 	}
@@ -153,15 +154,15 @@ class DMArea extends Component{
 		
 		return (<div className="DMArea">
 			<form>
-			<p style={style}>*為主索引鍵，若欲修改或刪除資料則此欄位不可為空白</p>
+			<p style={style}>{texts.DMPKInfo}</p>
 			<Fields 
 				cols={this.props.currentTable===null?null:this.props.currentTable.fields}
 				customClass="DMField"
 			/>
-			<button name = "add" type="submit" className="btn btn-primary" onClick={this.add}>新增</button>
-			<button name = "update" type="submit" className="btn btn-primary" onClick={this.update}>修改</button>
-			<button name = "delete" type="submit" className="btn btn-primary" onClick={this.delete}>刪除</button>
-			<button name = "clear" className="btn btn-primary" onClick={this.clear}>清空欄位</button>
+			<button name = "add" type="submit" className="btn btn-primary" onClick={this.add}>{texts.INSERTAlias}</button>
+			<button name = "update" type="submit" className="btn btn-primary" onClick={this.update}>{texts.UPDATEAlias}</button>
+			<button name = "delete" type="submit" className="btn btn-primary" onClick={this.delete}>{texts.DELETEALIAS}</button>
+			<button name = "clear" className="btn btn-primary" onClick={this.clear}>{texts.CLEARALIAS}</button>
 			</form>
 		</div>);
 	}
