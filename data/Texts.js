@@ -1,5 +1,11 @@
 module.exports = 
 {   
+    /* welcome hints */
+    hints: [
+        "歡迎使用後台資料庫操作系統",
+        "請選擇左上角 ✚ 號選擇表格",
+        "Please select a table by clicking ✚"],
+    /* title of table list*/
     TableListTitle: "Tables",
     /* Action Aliases */
     INSERTAlias: "新增",

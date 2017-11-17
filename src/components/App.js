@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "./SideBar";
+import NavBtn from "./NavBtn";
 import Main from "./Main";
 import store from "./store";
 import {Provider} from "react-redux";
@@ -9,7 +9,7 @@ let App = (props)=>{
 return (
 	<Provider store={store} >
 		<div className="container-fluid">
-		<SideBar/>
+		<NavBtn/>
 		<Main/>
 		</div>
 	</Provider>

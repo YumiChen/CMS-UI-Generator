@@ -2,7 +2,6 @@ $gray: rgb(158, 164, 168)
 $blue: rgb(0, 123, 255)
 
 *
-  // border: solid 1px
   box-sizing: border-box
   transition: all .5s
   position: relative
@@ -36,15 +35,11 @@ html,body
 body, .table
   @extend %scrollbar
 
-// thead, tbody
-//   width: 80vw
-//   border: solid red
-//   overflow: hidden
+
   
 #container, .container-fluid
   min-height: 100vh
   padding: 0
-  // border: solid red
 
 .container-fluid
   display: flex
@@ -53,9 +48,6 @@ body, .table
   background-color: $blue
   box-shadow: 2.5px 2.5px 10px 1px rgba(0,0,0,.2)
   z-index: 2
-  // overflow-y: scroll
-  // width: 30vw
-  // position: fixed
   & .navControl
     cursor: pointer
     font-size: 2em
@@ -82,7 +74,6 @@ body, .table
     width: 30vw
     padding: 1em
     padding-top: 3.7em
-    // overflow-y: scroll
     & .tableNames
       @extend %scrollbar
       position: fixed
@@ -114,12 +105,8 @@ body, .table
   padding: 1em 2em
   width: 100%
   margin-bottom: 1em
-  // display: flex
-  // flex-wrap: wrap
   & form
     width: 100%
-    // display: flex
-    // flex-wrap: wrap
     & div
       width: 100%
       display: flex
@@ -144,11 +131,34 @@ body, .table
 .stop-scrolling
   overflow-x: hidden
 
-.welcometitle
+.welcomeHint
   position: absolute
   left: 50%
   top: 50%
   transform: translate(-50%,-50%)
+  text-align: center
+  & p
+    margin: 0.2em
+
+.arrowHint
+  position: absolute
+  top: .5em
+  left: 2em
+  color: $blue
+  font-size: 2em
+  text-shadow: 2px 2px 5px rgba(0,0,0,.2)
+  animation: arrowHint 1s infinite linear both
+
+@keyframes arrowHint
+  0%
+    left: 2em
+  50%
+    left: 2.2em
+  100%
+    left: 2em
+
+
+  white-space: pre-line
   
 +mq('desktop',min)
   .main

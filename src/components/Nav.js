@@ -6,6 +6,7 @@ import action_currentTable from "../actions/action_currentTable";
 import action_getTables from "../actions/action_getTables";
 import {TableListTitle} from "../../data/Texts";
 import TableInfo from "../../data/TableInfo";
+import detectMobile from "../functions/detectMobile";
 
 // connected to state:tablenames
 // connected to action: change current table
@@ -13,7 +14,7 @@ import TableInfo from "../../data/TableInfo";
 class Nav extends Component{
 	constructor(props){
 		super(props);
-		this.state = {names: null};
+		this.state = {names: null, isMobile: detectMobile()};
 
 		// binding this
 		this.getNames = this.getNames.bind(this);
@@ -37,6 +38,8 @@ class Nav extends Component{
 				field.value = "";
 			});
 		}
+
+	if(this.state.isMobile) this.props.hideSelf();
 
 		// change global state
 		this.props.changeAPI(event);
